@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const { ApolloServer } = require('apollo-server-express');
+
 const { ApolloServerPluginLandingPageGraphQLPlayground } = require('apollo-server-core');
 const db = require('./config/connection');
 const { typeDefs, resolvers } = require('./schemas');
@@ -34,5 +35,7 @@ app.get('*', (req, res) => {
 });
 
 db.once('open', () => {
-  app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}`));
+  app.listen(PORT, () => {
+    console.log(`🌍 Now listening on localhost:${PORT}`);
+  });
 });
